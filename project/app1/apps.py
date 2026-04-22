@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class RmsConfig(AppConfig):
-    name = 'rms'
+class app1Config(AppConfig):
+    name = 'app1'

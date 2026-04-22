@@ -30,8 +30,8 @@ OrderItem:
 - quantity (PositiveIntegerField)
 - subtotal (DecimalField, max_digits=8)
 
-Payment:
-- order_amount (intField)
+#############Payment:
+- order_amount (intField) ForeignKey
 - method (CharField, max_length=20)
 - payment_date (DateTimeField)
 
@@ -40,7 +40,7 @@ Table:
 - capacity (IntegerField)
 - status (CharField, default="Available")
 
-Reservation:
+############Reservation:
 - customer -ForeignKey 
 - table_number -  IntegerField 
 - date_time - DateTimeField 

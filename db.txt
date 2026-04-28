@@ -13,16 +13,22 @@ User:
 - address (TextField, blank=True)
 - role (CharField, max_length=20)  # e.g., 'Customer', 'Staff', 'Admin'
 
-MenuItem:
-- name (CharField)
-- category (CharField, max_length=50)
-- price (floatField)
+category:
+- name (CharField, max_length=100)
+- description (TextField)
+
+Menu:
+- name (CharField, max_length=100)
+- price (DecimalField, max_digits=5, decimal_places=2)
+- description (TextField)
+- category (ForeignKey to category)
 
 Order:
-- User (ForeignKey)
-- order_date (DateTimeField)
-- status (CharField, max_length=20)['Pending','Completed','Delivered']
-- total_amount (floatField)
+- user (ForeignKey to User)
+- date (DateTimeField, auto_now_add)
+- status (CharField, choices: 'p' Pending, 'pr' Preparing, 's' Served, 'c' Completed)
+- payment_status (CharField, choices: 'p' Pending, 'c' Completed)
+- total_price (DecimalField, max_digits=7, decimal_places=2)
 
 OrderItem:
 - Order (ForeignKey)
@@ -36,9 +42,9 @@ OrderItem:
 - payment_date (DateTimeField)
 
 Table:
-- table_number (IntegerField, unique)
-- capacity (IntegerField)
-- status (CharField, default="Available")
+- number (IntegerField, unique)
+- seats (IntegerField)
+- is_available (BooleanField, default=True)
 
 ############Reservation:
 - customer -ForeignKey 

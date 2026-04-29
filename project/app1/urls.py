@@ -1,8 +1,8 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from .views import categoryGenericview, categoryDetailGenericview, tableGenericview
 
 urlpatterns = [
-    path('category/', views.category, name='category'),
-    path('category/<int:id>/', views.category_list, name='category_detail'),
-   
+    path('category/', categoryGenericview.as_view()),
+    path('category/<int:id>/', categoryDetailGenericview.as_view()),
+    path('table/', tableGenericview.as_view()),
 ]
